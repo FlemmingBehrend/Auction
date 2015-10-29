@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>dk.topdanmark</groupId>
-    <artifactId>auction-st</artifactId>
+    <artifactId>template-st</artifactId>
     <version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<dependencies>
@@ -35,5 +35,5 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <name>auction-st</name>
+    <name>template-st</name>
 </project>
