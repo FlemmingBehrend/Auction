@@ -9,6 +9,7 @@
     <modules>
     	<module>template</module>
     	<module>template-st</module>
-        <module>user-administration</module>
+        <module>user-registration</module>
+        <module>user-registration-st</module>
     </modules>
 </project>

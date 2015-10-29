@@ -1,4 +1,4 @@
-package dk.topdanmark.auction.test.boundary;
+package dk.topdanmark.registration.boundary;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,8 @@ import javax.ws.rs.core.Response;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class TestResourceIT {
+public class RegistrationResourceIT {
+
 
     private Client client;
     private WebTarget cut;
@@ -20,7 +21,7 @@ public class TestResourceIT {
     @Before
     public void init() {
         this.client = ClientBuilder.newClient();
-        this.cut = this.client.target("http://localhost:8080/resources/tester");
+        this.cut = this.client.target("http://localhost:8080/user-registration/resources/registration");
 
     }
 
@@ -31,6 +32,5 @@ public class TestResourceIT {
         String payload = response.readEntity(String.class);
         System.out.println("payload = " + payload);
     }
-
 
 }

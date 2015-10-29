@@ -1,4 +1,4 @@
-package dk.topdanmark.auction.test.boundary;
+package dk.topdanmark.test.boundary;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
