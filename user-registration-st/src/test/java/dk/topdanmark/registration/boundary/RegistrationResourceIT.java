@@ -22,7 +22,6 @@ public class RegistrationResourceIT {
     public void init() {
         this.client = ClientBuilder.newClient();
         this.cut = this.client.target("http://localhost:8080/user-registration/resources/registration");
-
     }
 
     @Test

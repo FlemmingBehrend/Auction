@@ -1,7 +1,13 @@
 package dk.topdanmark.registration.entity;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class User {
 
+    @NotNull
+    @Size(min = 2)
     private String name;
 
     private Email email;
