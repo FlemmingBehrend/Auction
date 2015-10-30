@@ -1,5 +1,7 @@
 package dk.topdanmark.registration.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -10,6 +12,9 @@ import java.util.Date;
 // DDD Value Object
 public class DateOfBirth {
 
+    @NotNull
+    @Past
+    @JsonProperty
     private Date date;
 
     private final String dateRegex = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$";
@@ -24,12 +29,17 @@ public class DateOfBirth {
         new DateOfBirth(date);
     }
 
-    public DateOfBirth(@NotNull @Past Date date) {
+    public DateOfBirth(Date date) {
         this.date = date;
     }
 
     public Date getDate() {
         return date;
+    }
+
+    @JsonProperty
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 }

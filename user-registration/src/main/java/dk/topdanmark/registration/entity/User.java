@@ -1,6 +1,5 @@
 package dk.topdanmark.registration.entity;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,8 +10,6 @@ public class User {
     private String name;
 
     private Email email;
-
-    private DateOfBirth dateOfBirth;
 
     public User(String name, Email email) {
         this.name = name;
@@ -35,12 +32,11 @@ public class User {
         this.email = email;
     }
 
-    public DateOfBirth getDateOfBirth() {
-        return dateOfBirth;
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email=" + email +
+                '}';
     }
-
-    public void setDateOfBirth(DateOfBirth dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
 }

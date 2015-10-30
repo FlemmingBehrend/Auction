@@ -17,8 +17,6 @@ public class UserFactory {
 
     String name;
 
-    DateOfBirth dateOfBirth;
-
     public UserFactory withEmail(String emailAddress) {
         this.email = new Email(emailAddress);
         validate(this.email);
@@ -30,18 +28,8 @@ public class UserFactory {
         return this;
     }
 
-    public UserFactory withDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = new DateOfBirth(dateOfBirth);
-        validate(this.dateOfBirth);
-        return this;
-    }
-
     public User build() {
         User user = new User(name, email);
-        if (dateOfBirth != null) {
-            user.setDateOfBirth(this.dateOfBirth);
-        }
-        validate(user);
         return user;
     }
 
