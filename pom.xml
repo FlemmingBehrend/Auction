@@ -6,9 +6,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-    	<module>template</module>
-    	<module>template-st</module>
+    	<module>bidding</module>
+    	<module>bidding-st</module>
         <module>user-registration</module>
         <module>user-registration-st</module>
+        <module>account-management</module>
     </modules>
 </project>

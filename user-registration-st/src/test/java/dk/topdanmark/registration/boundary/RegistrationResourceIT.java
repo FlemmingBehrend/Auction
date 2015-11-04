@@ -32,7 +32,6 @@ public class RegistrationResourceIT {
         JsonObject userObject = Json.createObjectBuilder()
                 .add("name", "Flemming")
                 .add("email", "topfeb@gmail.com")
-//                .add("dateOfBirth", Json.createObjectBuilder().add("date", new Date()))
                 .build();
         Response response = this.cut.request().post(Entity.json(userObject));
 

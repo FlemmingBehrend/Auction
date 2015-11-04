@@ -1,5 +1,6 @@
 package dk.topdanmark.registration.boundary;
 
+import dk.topdanmark.registration.control.RegistrationPublisher;
 import dk.topdanmark.registration.entity.User;
 import dk.topdanmark.registration.entity.UserFactory;
 
@@ -25,6 +26,9 @@ public class RegistrationResource {
     @Inject
     Event<User> userCreatedEvent;
 
+    @Inject
+    RegistrationPublisher registrationPublisher;
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response register(JsonObject user, @Context UriInfo info) {
@@ -35,6 +39,12 @@ public class RegistrationResource {
         URI uri = info.getAbsolutePathBuilder().path("/" + registeredUser.getEmail().getAddress()).build();
         userCreatedEvent.fire(registeredUser);
         return Response.created(uri).build();
+    }
+
+    @GET
+    public Response test() {
+        registrationPublisher.process("Topic message sent");
+        return Response.ok().build();
     }
 
 }

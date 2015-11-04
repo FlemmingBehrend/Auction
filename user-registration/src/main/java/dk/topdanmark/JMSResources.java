@@ -1,0 +1,18 @@
+package dk.topdanmark;
+
+
+import javax.jms.JMSDestinationDefinition;
+import javax.jms.JMSDestinationDefinitions;
+
+@JMSDestinationDefinitions({
+        @JMSDestinationDefinition(
+                name = JMSResources.REGISTERED,
+                resourceAdapter = "jmsra",
+                interfaceName = "javax.jms.Topic",
+                destinationName = "MyTopic",
+                description = "Used for publishing registered users"
+        )
+})
+public class JMSResources {
+    public static final String REGISTERED = "java:global/jms/MyTopic";
+}
