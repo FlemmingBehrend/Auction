@@ -58,3 +58,4 @@ crashlytics.properties
 crashlytics-build.properties
 
 .DS_Store
+database
