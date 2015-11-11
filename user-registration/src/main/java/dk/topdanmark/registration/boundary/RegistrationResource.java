@@ -1,14 +1,14 @@
 package dk.topdanmark.registration.boundary;
 
-import dk.topdanmark.registration.control.RegistrationPublisher;
 import dk.topdanmark.registration.entity.User;
-import dk.topdanmark.registration.entity.UserFactory;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.json.JsonObject;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,15 +19,9 @@ import java.net.URI;
 @Stateless
 @Produces(MediaType.APPLICATION_JSON)
 public class RegistrationResource {
-
+    
     @Inject
-    UserFactory userFactory;
-
-    @Inject
-    Event<User> userCreatedEvent;
-
-    @Inject
-    RegistrationPublisher registrationPublisher;
+    Registrations registrations;
 
     static final String NAME_KEY = "name";
     static final String EMAIL_KEY = "email";
@@ -48,20 +42,9 @@ public class RegistrationResource {
                     .build();
         }
 
-        User registeredUser = userFactory
-                .withName(user.getString("name"))
-                .withEmail(user.getString("email"))
-                .build();
-
+        User registeredUser = registrations.register(user.getString(NAME_KEY), user.getString(EMAIL_KEY));
         URI uri = info.getAbsolutePathBuilder().path("/" + registeredUser.getEmail().getAddress()).build();
-        userCreatedEvent.fire(registeredUser);
         return Response.created(uri).build();
-    }
-
-    @GET
-    public Response test() {
-        registrationPublisher.process("Topic message sent");
-        return Response.ok().build();
     }
 
 }
