@@ -4,7 +4,6 @@ import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +18,7 @@ public class UserFactory {
 
     public UserFactory withEmail(String emailAddress) {
         this.email = new Email(emailAddress);
-        validate(this.email);
+//        validate(this.email);
         return this;
     }
 
@@ -30,6 +29,7 @@ public class UserFactory {
 
     public User build() {
         User user = new User(name, email);
+        validate(user);
         return user;
     }
 

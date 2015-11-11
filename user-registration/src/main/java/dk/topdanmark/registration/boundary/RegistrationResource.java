@@ -29,13 +29,30 @@ public class RegistrationResource {
     @Inject
     RegistrationPublisher registrationPublisher;
 
+    static final String NAME_KEY = "name";
+    static final String EMAIL_KEY = "email";
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response register(JsonObject user, @Context UriInfo info) {
+
+        if (!user.containsKey(NAME_KEY) || user.isNull(NAME_KEY)) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .header("error", NAME_KEY + " is required")
+                    .build();
+        }
+
+        if (!user.containsKey(EMAIL_KEY) || user.isNull(EMAIL_KEY)) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .header("error", EMAIL_KEY + " is required")
+                    .build();
+        }
+
         User registeredUser = userFactory
                 .withName(user.getString("name"))
                 .withEmail(user.getString("email"))
                 .build();
+
         URI uri = info.getAbsolutePathBuilder().path("/" + registeredUser.getEmail().getAddress()).build();
         userCreatedEvent.fire(registeredUser);
         return Response.created(uri).build();
