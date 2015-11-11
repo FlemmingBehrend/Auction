@@ -1,4 +1,4 @@
-package dk.topdanmark.test;
+package dk.topdanmark.shared.test;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import org.junit.Before;

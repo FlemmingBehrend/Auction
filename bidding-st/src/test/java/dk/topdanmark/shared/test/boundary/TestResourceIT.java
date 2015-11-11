@@ -1,4 +1,4 @@
-package dk.topdanmark.test.boundary;
+package dk.topdanmark.shared.test.boundary;
 
 import org.junit.Before;
 import org.junit.Test;
