@@ -11,5 +11,6 @@
         <module>user-registration</module>
         <module>user-registration-st</module>
         <module>account-management</module>
+        <module>SharedKernel</module>
     </modules>
 </project>
