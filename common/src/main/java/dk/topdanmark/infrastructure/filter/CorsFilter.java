@@ -1,4 +1,4 @@
-package dk.topdanmark;
+package dk.topdanmark.infrastructure.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -19,7 +19,7 @@ public class CorsFilter implements Filter {
         String origin = req.getHeader("Origin");
         if (originIsAllowed(origin)) {
             resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-            resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type, origin, accept, content-type, If-Modified-Since, Range");
+            resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type, origin, accept, If-Modified-Since, Range");
             resp.setHeader("Access-Control-Allow-Origin", origin);
             resp.setHeader("Access-Control-Allow-Credentials", "true");
             if (!req.getMethod().equals("OPTIONS")) {
@@ -31,10 +31,7 @@ public class CorsFilter implements Filter {
     }
 
     private boolean originIsAllowed(String origin) {
-        System.out.println("origin = " + origin);
-        if (origin == null || origin.contains("127.0.0.1") || origin.contains("localhost"))
-            return true;
-        return false;
+        return origin == null || origin.contains("127.0.0.1") || origin.contains("localhost");
     }
 
     @Override

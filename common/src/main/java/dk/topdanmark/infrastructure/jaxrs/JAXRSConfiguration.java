@@ -1,4 +1,4 @@
-package dk.topdanmark;
+package dk.topdanmark.infrastructure.jaxrs;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
