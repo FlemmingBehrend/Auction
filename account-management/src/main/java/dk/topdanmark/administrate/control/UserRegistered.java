@@ -1,4 +1,4 @@
-package dk.topdanmark.registration.control;
+package dk.topdanmark.administrate.control;
 
 import dk.topdanmark.JMSResources;
 
@@ -8,7 +8,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 
 @MessageDriven(mappedName = JMSResources.REGISTERED)
-public class MyTopicMessageListener implements MessageListener {
+public class UserRegistered implements MessageListener {
 
     @Override
     public void onMessage(Message message) {

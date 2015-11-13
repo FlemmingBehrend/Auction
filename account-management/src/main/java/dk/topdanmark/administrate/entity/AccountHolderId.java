@@ -1,20 +1,18 @@
-package dk.topdanmark.bidding.entity;
+package dk.topdanmark.administrate.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Embeddable
-public class AccountId implements Serializable {
+public class AccountHolderId implements Serializable {
 
-    @Column(name = "account_id", unique = true, updatable = false)
+    @Column(name = "account_holder_id", unique = true, updatable = false)
     private String id;
 
-    public AccountId() {
+    public AccountHolderId() {
     }
 
-    public AccountId(@NotNull String id) {
+    public AccountHolderId(@NotNull String id) {
         this.id = id;
     }
 
@@ -30,9 +28,12 @@ public class AccountId implements Serializable {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        AccountId accountId = (AccountId) o;
+        AccountHolderId accountHolderId = (AccountHolderId) o;
 
-        return id.equals(accountId.id);
+        if (!id.equals(accountHolderId.id))
+            return false;
+
+        return true;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class AccountId implements Serializable {
 
     @Override
     public String toString() {
-        return "AccountId{" +
+        return "AccountHolderId{" +
                 "id='" + id + '\'' +
                 '}';
     }

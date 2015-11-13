@@ -18,7 +18,6 @@ public class UserFactory {
 
     public UserFactory withEmail(String emailAddress) {
         this.email = new Email(emailAddress);
-//        validate(this.email);
         return this;
     }
 

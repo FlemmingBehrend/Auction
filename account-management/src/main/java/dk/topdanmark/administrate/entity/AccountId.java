@@ -1,4 +1,4 @@
-package dk.topdanmark.bidding.entity;
+package dk.topdanmark.administrate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -33,6 +33,7 @@ public class AccountId implements Serializable {
         AccountId accountId = (AccountId) o;
 
         return id.equals(accountId.id);
+
     }
 
     @Override
