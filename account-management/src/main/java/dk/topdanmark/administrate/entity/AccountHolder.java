@@ -1,17 +1,20 @@
 package dk.topdanmark.administrate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import dk.topdanmark.domain.types.DDDEntity;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-public class AccountHolder {
+@DDDEntity
+public class AccountHolder implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
-
-    private AccountHolderId accountHolderId;
 
     private String firstName;
 
@@ -19,13 +22,10 @@ public class AccountHolder {
 
     private String ssn;
 
-    public AccountHolderId getAccountHolderId() {
-        return accountHolderId;
-    }
-
-    public void setAccountHolderId(AccountHolderId accountHolderId) {
-        this.accountHolderId = accountHolderId;
-    }
+    @NotNull
+    @Past
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     public String getFirstName() {
         return firstName;
@@ -50,4 +50,15 @@ public class AccountHolder {
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+
+
 }

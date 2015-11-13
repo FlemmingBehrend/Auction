@@ -1,5 +1,7 @@
 package dk.topdanmark.registration.entity;
 
+import dk.topdanmark.domain.types.DDDFactory;
+
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -7,6 +9,7 @@ import javax.validation.Validator;
 import java.util.HashSet;
 import java.util.Set;
 
+@DDDFactory
 public class UserFactory {
 
     @Inject

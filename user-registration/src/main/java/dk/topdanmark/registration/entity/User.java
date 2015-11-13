@@ -1,9 +1,13 @@
 package dk.topdanmark.registration.entity;
 
+import dk.topdanmark.domain.types.DDDAggregateRoot;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-public class User {
+@DDDAggregateRoot
+public class User implements Serializable {
 
     @NotNull
     @Size(min = 2)

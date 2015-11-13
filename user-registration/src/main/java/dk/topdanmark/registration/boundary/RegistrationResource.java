@@ -1,8 +1,11 @@
 package dk.topdanmark.registration.boundary;
 
+import dk.topdanmark.registration.control.RegistrationPublisher;
 import dk.topdanmark.registration.entity.User;
+import dk.topdanmark.registration.entity.UserFactory;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
@@ -21,7 +24,13 @@ import java.net.URI;
 public class RegistrationResource {
     
     @Inject
-    Registrations registrations;
+    UserFactory userFactory;
+
+    @Inject
+    Event<User> userCreatedEvent;
+
+    @Inject
+    RegistrationPublisher registrationPublisher;
 
     static final String NAME_KEY = "name";
     static final String EMAIL_KEY = "email";
@@ -42,7 +51,13 @@ public class RegistrationResource {
                     .build();
         }
 
-        User registeredUser = registrations.register(user.getString(NAME_KEY), user.getString(EMAIL_KEY));
+        User registeredUser = userFactory
+                .withName(user.getString(NAME_KEY))
+                .withEmail(user.getString(EMAIL_KEY))
+                .build();
+
+        userCreatedEvent.fire(registeredUser);
+        registrationPublisher.process(registeredUser);
         URI uri = info.getAbsolutePathBuilder().path("/" + registeredUser.getEmail().getAddress()).build();
         return Response.created(uri).build();
     }

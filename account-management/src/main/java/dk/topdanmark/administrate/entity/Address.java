@@ -1,9 +1,13 @@
 package dk.topdanmark.administrate.entity;
 
+import dk.topdanmark.domain.types.DDDValueObject;
+
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class Address {
+@DDDValueObject
+public class Address implements Serializable {
 
     private String streetName;
 

@@ -1,11 +1,14 @@
 package dk.topdanmark.administrate.entity;
 
+import dk.topdanmark.domain.types.DDDValueObject;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Embeddable
+@DDDValueObject
 public class AccountId implements Serializable {
 
     @Column(name = "account_id", unique = true, updatable = false)

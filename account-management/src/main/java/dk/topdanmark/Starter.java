@@ -22,7 +22,6 @@ public class Starter {
     public void load() {
         Account account = new Account();
         AccountHolder accountHolder = new AccountHolder();
-        accountHolder.setAccountHolderId(new AccountHolderId(UUID.randomUUID().toString()));
         accountHolder.setFirstName("Flemming");
         accountHolder.setLastName("Behrend");
         account.setAccountHolder(accountHolder);

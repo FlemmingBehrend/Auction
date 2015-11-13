@@ -1,12 +1,14 @@
-package dk.topdanmark.registration.entity;
+package dk.topdanmark.administrate.entity;
 
 import dk.topdanmark.domain.types.DDDValueObject;
 
+import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @DDDValueObject
+@Embeddable
 public class Email implements Serializable{
 
     private final String emailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,63}$";
