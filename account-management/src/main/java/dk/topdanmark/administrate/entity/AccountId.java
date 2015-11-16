@@ -1,10 +1,10 @@
 package dk.topdanmark.administrate.entity;
 
 import dk.topdanmark.domain.types.DDDValueObject;
+import dk.topdanmark.domain.constraints.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Embeddable
@@ -17,7 +17,7 @@ public class AccountId implements Serializable {
     public AccountId() {
     }
 
-    public AccountId(@NotNull String id) {
+    public AccountId(@UUID String id) {
         this.id = id;
     }
 
@@ -36,7 +36,6 @@ public class AccountId implements Serializable {
         AccountId accountId = (AccountId) o;
 
         return id.equals(accountId.id);
-
     }
 
     @Override

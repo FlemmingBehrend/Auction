@@ -3,7 +3,6 @@ package dk.topdanmark.administrate.entity;
 import dk.topdanmark.domain.types.DDDEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,10 +21,8 @@ public class AccountHolder implements Serializable {
 
     private String ssn;
 
-    @NotNull
-    @Past
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date birthDate;
 
     public String getFirstName() {
         return firstName;
@@ -51,14 +48,12 @@ public class AccountHolder implements Serializable {
         this.ssn = ssn;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setBirthDate(@Past Date birthDate) {
+        this.birthDate = birthDate;
     }
-
-
 
 }

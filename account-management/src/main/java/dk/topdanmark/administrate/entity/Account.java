@@ -18,9 +18,22 @@ public class Account implements Serializable {
     @Embedded
     private AccountId accountId;
 
+    @Embedded
+    private Email email;
+
     @OneToOne
-    @Basic(optional = false, fetch = FetchType.EAGER)
     private AccountHolder accountHolder;
+
+    private Account() {
+        // needed by JPA
+    }
+
+    public Account(AccountId accountId, String emailAddress) {
+        this.accountId = accountId;
+        this.email = new Email(emailAddress);
+        this.status = AccountStatus.CREATED;
+        this.accountHolder = new AccountHolder();
+    }
 
     @Lob
     @Column(table = "PICTURES")
@@ -74,7 +87,7 @@ public class Account implements Serializable {
 
     @Override
     public int hashCode() {
-        Integer test = new HashCodeBuilder().append("test").build();
         return accountId != null ? accountId.hashCode() : 0;
     }
+
 }
