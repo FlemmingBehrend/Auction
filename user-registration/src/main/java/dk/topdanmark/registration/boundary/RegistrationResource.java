@@ -38,7 +38,7 @@ public class RegistrationResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response register(JsonObject user, @Context UriInfo info) {
-
+        System.out.println(System.getProperty("dscm"));
         if (!user.containsKey(NAME_KEY) || user.isNull(NAME_KEY)) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .header("error", NAME_KEY + " is required")

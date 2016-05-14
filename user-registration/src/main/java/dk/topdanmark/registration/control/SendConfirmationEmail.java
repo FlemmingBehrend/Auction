@@ -4,21 +4,26 @@ import dk.topdanmark.registration.entity.User;
 
 import javax.annotation.Resource;
 import javax.enterprise.event.Observes;
+import javax.inject.Inject;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
-import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SendConfirmationEmail {
 
     @Resource(name = "email/system")
-    private Session mailSession;
+    Session mailSession;
+
+    @Inject
+    Logger logger;
 
     public void execute(@Observes User user) {
-        System.out.println("user.toString() = " + user.toString());
+        logger.log(Level.INFO, "user.toString() = " + user.toString());
         Message msg = new MimeMessage(mailSession);
         try {
             msg.setSubject("Confirmation Mail");
